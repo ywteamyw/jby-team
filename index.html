@@ -418,8 +418,9 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
       c.classList.toggle('hide', !show);
       if(show) visible++;
     });
-    // Show pagination only when results actually overflow one page.
-    if(pager) pager.style.display = (visible > PAGE_SIZE) ? 'flex' : 'none';
+    // Pagination: always shown on the full "All" view (the Figma first page);
+    // hidden for a specific location that fits on a single page.
+    if(pager) pager.style.display = (port==='all' || visible > PAGE_SIZE) ? 'flex' : 'none';
   }
 
   tabs.forEach(function(tab){

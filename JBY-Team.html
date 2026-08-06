@@ -398,19 +398,44 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
   onScroll();
 
   /* ---- Location filter ---- */
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tf'));
+  var tabs  = Array.prototype.slice.call(document.querySelectorAll('.tf'));
   var cards = Array.prototype.slice.call(document.querySelectorAll('.team-card'));
+  var pager = document.querySelector('.team-pager');
+  var PAGE_SIZE = 16; // one page holds up to 16 cards (matches the Figma grid)
+
+  function countFor(port){
+    return cards.filter(function(c){
+      return port==='all' || c.getAttribute('data-port')===port;
+    }).length;
+  }
+
+  // Never let anyone land on an empty grid: hide location tabs that have nobody.
+  // (Data-driven — a tab reappears automatically if people are added there.)
+  tabs.forEach(function(tab){
+    var port = tab.getAttribute('data-port');
+    if(port!=='all' && countFor(port)===0){ tab.style.display='none'; }
+  });
+
+  function applyFilter(port){
+    var visible = 0;
+    cards.forEach(function(c){
+      var show = (port==='all') || (c.getAttribute('data-port')===port);
+      c.classList.toggle('hide', !show);
+      if(show) visible++;
+    });
+    // Show pagination only when results actually overflow one page.
+    if(pager) pager.style.display = (visible > PAGE_SIZE) ? 'flex' : 'none';
+  }
+
   tabs.forEach(function(tab){
     tab.addEventListener('click', function(){
       tabs.forEach(function(t){ t.classList.remove('on'); t.setAttribute('aria-selected','false'); });
       tab.classList.add('on'); tab.setAttribute('aria-selected','true');
-      var port = tab.getAttribute('data-port');
-      cards.forEach(function(c){
-        var show = (port==='all') || (c.getAttribute('data-port')===port);
-        c.classList.toggle('hide', !show);
-      });
+      applyFilter(tab.getAttribute('data-port'));
     });
   });
+
+  applyFilter('all'); // set initial pager visibility
 
   /* ---- Magnetic buttons ---- */
   if(!reduceMotion && window.matchMedia('(pointer:fine)').matches){

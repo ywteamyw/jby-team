@@ -88,6 +88,15 @@ main{padding-top:128px}
   transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(0.22,1,0.36,1)}
 .tf.on::after{transform:scaleX(1)}
 
+/* secondary "by role" filter row */
+.team-filter--role{margin-top:16px;border-bottom:0;gap:24px;align-items:center}
+.tf-eyebrow{font-family:'Myriad Pro',sans-serif;font-weight:400;font-size:12px;line-height:36px;
+  letter-spacing:0.08em;text-transform:uppercase;color:#a2a2a9;white-space:nowrap}
+.team-filter--role .tf{font-size:14px;line-height:30px;padding-bottom:6px;color:#8a8a92}
+.team-filter--role .tf:hover{color:#111}
+.team-filter--role .tf.on{color:var(--navy)}
+.team-filter--role .tf::after{background:var(--navy)}
+
 /* ============================= TEAM GRID ============================= */
 .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 20px;padding-top:48px}
 .team-card{position:relative;aspect-ratio:325/406;border-radius:2px;overflow:hidden;background:#e9edf1}
@@ -228,74 +237,81 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
       <button class="tf" data-port="wrightsville-beach" role="tab">Wrightsville Beach</button>
       <button class="tf" data-port="charleston" role="tab">Charleston</button>
     </div>
+    <div class="team-filter team-filter--role reveal d2" role="tablist" aria-label="Filter team by role">
+      <span class="tf-eyebrow">Role</span>
+      <button class="tf rf on" data-role="all" role="tab" aria-selected="true">All</button>
+      <button class="tf rf" data-role="sales" role="tab">Sales</button>
+      <button class="tf rf" data-role="service" role="tab">Service</button>
+      <button class="tf rf" data-role="management" role="tab">Management</button>
+    </div>
   </section>
 
   <section class="wrap team-grid" id="team-grid">
     <!-- Row 1 -->
-    <article class="team-card reveal" data-port="san-diego">
+    <article class="team-card reveal" data-port="san-diego" data-role="management">
       <div class="t-photo"><img src="./assets/t01_jeff_brown.jpg" alt="Jeff Brown" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">San Diego Office</span><div class="t-nr"><span class="t-name">Jeff Brown</span><span class="t-role">Owner</span></div></div>
     </article>
-    <article class="team-card reveal d1" data-port="san-diego">
+    <article class="team-card reveal d1" data-port="san-diego" data-role="management">
       <div class="t-photo"><img src="./assets/t02_melina_monninger.jpg" alt="Melina Monninger" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">San Diego Office</span><div class="t-nr"><span class="t-name">Melina Monninger</span><span class="t-role">Marketing Manager</span></div></div>
     </article>
-    <article class="team-card reveal d2" data-port="newport-harbor">
+    <article class="team-card reveal d2" data-port="newport-harbor" data-role="sales">
       <div class="t-photo"><img src="./assets/t03_allen_jones.jpg" alt="Allen Jones" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">Newport Harbor Office</span><div class="t-nr"><span class="t-name">Allen Jones</span><span class="t-role">Sales Professional &amp; Mari-Time Manager</span></div></div>
     </article>
-    <article class="team-card reveal d3" data-port="san-diego">
+    <article class="team-card reveal d3" data-port="san-diego" data-role="management">
       <div class="t-photo"><img src="./assets/t04_adam_aronson.jpg" alt="Adam Aronson" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">San Diego Office</span><div class="t-nr"><span class="t-name">Adam Aronson</span><span class="t-role">Accounting Manager</span></div></div>
     </article>
     <!-- Row 2 -->
-    <article class="team-card reveal" data-port="san-diego">
+    <article class="team-card reveal" data-port="san-diego" data-role="management">
       <div class="t-photo"><img src="./assets/t05_karen_brown.jpg" alt="Karen Brown" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">San Diego Office</span><div class="t-nr"><span class="t-name">Karen Brown</span><span class="t-role">Cruise Director</span></div></div>
     </article>
-    <article class="team-card reveal d1" data-port="seattle">
+    <article class="team-card reveal d1" data-port="seattle" data-role="service">
       <div class="t-photo"><img src="./assets/t06_ryan_anderson.jpg" alt="Ryan Anderson" loading="lazy"/></div>
-      <div class="t-label"><span class="t-office">Seattle Office</span><div class="t-nr"><span class="t-name">Ryan Anderson</span><span class="t-role">Sales Professional</span></div></div>
+      <div class="t-label"><span class="t-office">Seattle Office</span><div class="t-nr"><span class="t-name">Ryan Anderson</span><span class="t-role">Service Technician</span></div></div>
     </article>
-    <article class="team-card reveal d2" data-port="kona">
+    <article class="team-card reveal d2" data-port="kona" data-role="service">
       <div class="t-photo"><img src="./assets/t07_andy_witherspoon.jpg" alt="Andy Witherspoon" loading="lazy"/></div>
-      <div class="t-label"><span class="t-office">Kona Office</span><div class="t-nr"><span class="t-name">Andy Witherspoon</span><span class="t-role">Sales Professional</span></div></div>
+      <div class="t-label"><span class="t-office">Kona Office</span><div class="t-nr"><span class="t-name">Andy Witherspoon</span><span class="t-role">Service Manager</span></div></div>
     </article>
-    <article class="team-card reveal d3" data-port="newport-harbor">
+    <article class="team-card reveal d3" data-port="newport-harbor" data-role="sales">
       <div class="t-photo"><img src="./assets/t08_will_de_jong.jpg" alt="Will De Jong" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">Newport Harbor Office</span><div class="t-nr"><span class="t-name">Will De Jong</span><span class="t-role">Sales Professional</span></div></div>
     </article>
     <!-- Row 3 -->
-    <article class="team-card reveal" data-port="sausalito">
+    <article class="team-card reveal" data-port="sausalito" data-role="management">
       <div class="t-photo"><img src="./assets/t09_rachelle_deal.jpg" alt="Rachelle Deal" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">Sausalito Office</span><div class="t-nr"><span class="t-name">Rachelle Deal</span><span class="t-role">Personal Assistant</span></div></div>
     </article>
-    <article class="team-card reveal d1" data-port="san-diego">
+    <article class="team-card reveal d1" data-port="san-diego" data-role="management">
       <div class="t-photo"><img src="./assets/t10_justin_puccio.jpg" alt="Justin Puccio" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">San Diego Office</span><div class="t-nr"><span class="t-name">Justin Puccio</span><span class="t-role">Accounting Analyst</span></div></div>
     </article>
-    <article class="team-card reveal d2" data-port="wrightsville-beach">
+    <article class="team-card reveal d2" data-port="wrightsville-beach" data-role="management">
       <div class="t-photo"><img src="./assets/t11_audrey_benner.jpg" alt="Audrey Benner" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">Wrightsville Beach Office</span><div class="t-nr"><span class="t-name">Audrey Benner</span><span class="t-role">Office Manager</span></div></div>
     </article>
-    <article class="team-card reveal d3" data-port="san-diego">
+    <article class="team-card reveal d3" data-port="san-diego" data-role="sales">
       <div class="t-photo"><img src="./assets/t12_colton_dykes.jpg" alt="Colton Dykes" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">San Diego Office</span><div class="t-nr"><span class="t-name">Colton Dykes</span><span class="t-role">Sales Professional</span></div></div>
     </article>
     <!-- Row 4 -->
-    <article class="team-card reveal" data-port="charleston">
+    <article class="team-card reveal" data-port="charleston" data-role="management">
       <div class="t-photo"><img src="./assets/t13_robin_briscoe.jpg" alt="Robin Briscoe" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">Charleston Office</span><div class="t-nr"><span class="t-name">Robin Briscoe</span><span class="t-role">Bookkeeper</span></div></div>
     </article>
-    <article class="team-card reveal d1" data-port="marina-del-rey">
+    <article class="team-card reveal d1" data-port="marina-del-rey" data-role="sales">
       <div class="t-photo"><img src="./assets/t14_wayne_racuya.jpg" alt="Wayne Racuya" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">Marina del Rey</span><div class="t-nr"><span class="t-name">Wayne Racuya</span><span class="t-role">Sales Professional</span></div></div>
     </article>
-    <article class="team-card reveal d2" data-port="newport-harbor">
+    <article class="team-card reveal d2" data-port="newport-harbor" data-role="sales">
       <div class="t-photo"><img src="./assets/t15_kyle_harmon.jpg" alt="Kyle Harmon" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">Newport Harbor Office</span><div class="t-nr"><span class="t-name">Kyle Harmon</span><span class="t-role">Sales Professional</span></div></div>
     </article>
-    <article class="team-card reveal d3" data-port="marina-del-rey">
+    <article class="team-card reveal d3" data-port="marina-del-rey" data-role="sales">
       <div class="t-photo"><img src="./assets/t16_jim_ewing.jpg" alt="Jim Ewing" loading="lazy"/></div>
       <div class="t-label"><span class="t-office">Marina del Rey</span><div class="t-nr"><span class="t-name">Jim Ewing</span><span class="t-role">Sales Professional</span></div></div>
     </article>
@@ -405,33 +421,42 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
   window.addEventListener('scroll', onScroll, { passive:true });
   onScroll();
 
-  /* ---- Location filter ---- */
-  var tabs  = Array.prototype.slice.call(document.querySelectorAll('.tf'));
-  var cards = Array.prototype.slice.call(document.querySelectorAll('.team-card'));
+  /* ---- Filters: office (location) + role, combined (AND) ---- */
+  var cards      = Array.prototype.slice.call(document.querySelectorAll('.team-card'));
+  var officeTabs = Array.prototype.slice.call(document.querySelectorAll('.team-filter:not(.team-filter--role) .tf'));
+  var roleTabs   = Array.prototype.slice.call(document.querySelectorAll('.team-filter--role .tf'));
   var pager = document.querySelector('.team-pager');
   var PAGE_SIZE = 16; // one page holds up to 16 cards (matches the Figma grid)
+  var curOffice = 'all', curRole = 'all';
 
-  function applyFilter(port){
+  function applyFilters(){
     var visible = 0;
     cards.forEach(function(c){
-      var show = (port==='all') || (c.getAttribute('data-port')===port);
+      var okOffice = (curOffice==='all') || (c.getAttribute('data-port')===curOffice);
+      var okRole   = (curRole==='all')   || (c.getAttribute('data-role')===curRole);
+      var show = okOffice && okRole;
       c.classList.toggle('hide', !show);
       if(show) visible++;
     });
-    // Pagination: always shown on the full "All" view (the Figma first page);
-    // hidden for a specific location that fits on a single page.
-    if(pager) pager.style.display = (port==='all' || visible > PAGE_SIZE) ? 'flex' : 'none';
+    // Pagination on the full first page (no filter active); hidden for any subset that fits one page.
+    var isDefault = (curOffice==='all' && curRole==='all');
+    if(pager) pager.style.display = (isDefault || visible > PAGE_SIZE) ? 'flex' : 'none';
   }
 
-  tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){
-      tabs.forEach(function(t){ t.classList.remove('on'); t.setAttribute('aria-selected','false'); });
-      tab.classList.add('on'); tab.setAttribute('aria-selected','true');
-      applyFilter(tab.getAttribute('data-port'));
+  function wire(tabList, setter){
+    tabList.forEach(function(tab){
+      tab.addEventListener('click', function(){
+        tabList.forEach(function(t){ t.classList.remove('on'); t.setAttribute('aria-selected','false'); });
+        tab.classList.add('on'); tab.setAttribute('aria-selected','true');
+        setter(tab);
+        applyFilters();
+      });
     });
-  });
+  }
+  wire(officeTabs, function(tab){ curOffice = tab.getAttribute('data-port'); });
+  wire(roleTabs,   function(tab){ curRole   = tab.getAttribute('data-role'); });
 
-  applyFilter('all'); // set initial pager visibility
+  applyFilters(); // set initial pager visibility
 
   /* ---- Magnetic buttons ---- */
   if(!reduceMotion && window.matchMedia('(pointer:fine)').matches){

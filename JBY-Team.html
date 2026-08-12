@@ -117,6 +117,9 @@ main{padding-top:128px}
 .team-card.hide{display:none}
 
 /* ============================= PAGINATION ============================= */
+.team-empty{padding-top:64px;text-align:center;font-family:'Myriad Pro',sans-serif;font-weight:300;
+  font-size:18px;line-height:28px;color:var(--mute)}
+.team-empty[hidden]{display:none}
 .team-pager{display:flex;align-items:center;justify-content:center;gap:16px;padding-top:56px}
 .pg-nav{font-family:'Mesmerize',sans-serif;font-weight:300;font-size:12px;line-height:18px;letter-spacing:0.02em;
   text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;transition:.2s}
@@ -317,6 +320,8 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
     </article>
   </section>
 
+  <p class="wrap team-empty" id="team-empty" hidden>No team members match these filters.</p>
+
   <div class="wrap team-pager reveal">
     <button class="pg-nav back" disabled aria-label="Previous page">&lsaquo; Back</button>
     <div class="pg-nums">
@@ -426,6 +431,7 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
   var officeTabs = Array.prototype.slice.call(document.querySelectorAll('.team-filter:not(.team-filter--role) .tf'));
   var roleTabs   = Array.prototype.slice.call(document.querySelectorAll('.team-filter--role .tf'));
   var pager = document.querySelector('.team-pager');
+  var emptyEl = document.getElementById('team-empty');
   var PAGE_SIZE = 16; // one page holds up to 16 cards (matches the Figma grid)
   var curOffice = 'all', curRole = 'all';
 
@@ -438,6 +444,8 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
       c.classList.toggle('hide', !show);
       if(show) visible++;
     });
+    // Graceful message when a filter combination has nobody (e.g. Service + a location with none).
+    if(emptyEl) emptyEl.hidden = (visible > 0);
     // Pagination on the full first page (no filter active); hidden for any subset that fits one page.
     var isDefault = (curOffice==='all' && curRole==='all');
     if(pager) pager.style.display = (isDefault || visible > PAGE_SIZE) ? 'flex' : 'none';

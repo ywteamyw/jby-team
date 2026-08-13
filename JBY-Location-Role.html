@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Location + Role — 3 options — Jeff Brown Yachts</title>
+<title>Location + Role — 4 options — Jeff Brown Yachts</title>
 <link rel="stylesheet" href="./assets/fonts.css"/>
 <style>
 :root{
@@ -50,9 +50,9 @@ button{font-family:inherit;cursor:pointer;-webkit-appearance:none;border:0;backg
 /* bottom stack: role tag sits just ABOVE the white label, left-aligned */
 .card-foot{position:absolute;left:10px;right:10px;bottom:10px;display:flex;flex-direction:column;align-items:flex-start;gap:2px}
 .tag{font-family:'Myriad Pro',sans-serif;font-size:16px;line-height:1;letter-spacing:0.06em;text-transform:uppercase;color:#fff;
-  background:rgba(65,100,123,0.94);padding:6px 11px;border-radius:3px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+  background:rgba(65,100,123,0.94);padding:6px 11px;border-radius:2px;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .lab{width:100%;padding:13px 13px 14px;border-radius:2px;
-  background:rgba(255,255,255,0.93);backdrop-filter:blur(8px) saturate(120%);-webkit-backdrop-filter:blur(8px) saturate(120%)}
+  background:rgba(255,255,255,0.9);backdrop-filter:blur(8px) saturate(120%);-webkit-backdrop-filter:blur(8px) saturate(120%)}
 .lab .of{font-family:'Myriad Pro',sans-serif;font-size:16px;line-height:20px;color:var(--navy);margin-bottom:5px}
 .lab .nm{font-family:'Mesmerize',sans-serif;font-weight:300;text-transform:uppercase;font-size:16px;line-height:20px;color:#111}
 .lab .rl{font-family:'Myriad Pro',sans-serif;font-size:16px;line-height:21px;color:var(--mute);margin-top:3px}
@@ -88,7 +88,8 @@ button{font-family:inherit;cursor:pointer;-webkit-appearance:none;border:0;backg
 .facet-block--fill button.on .n{opacity:0.85}
 
 /* variant 3: underline tabs */
-[data-grid="g3"] .tag{font-size:14px} /* caps tag can be 14px */
+[data-grid="g3"] .tag,[data-grid="g4"] .tag{font-size:14px} /* caps tag can be 14px */
+@media (min-width:1041px){ [data-grid="g4"] .v-grid{grid-template-columns:repeat(3,1fr)} } /* variant 4: 3 wider cards per row */
 .facet-block--tabs button{padding:9px 2px;color:#7a7a82;font-weight:300}
 .facet-block--tabs button:hover{color:#111}
 .facet-block--tabs button.on{color:#111;font-weight:400}
@@ -112,12 +113,12 @@ footer.pg{padding:36px 40px 80px;border-top:1px solid var(--hair);font-family:'M
 
 <div class="bar">
   <a class="logo" href="./index.html" aria-label="Jeff Brown Yachts"><img src="./assets/jby_logo.svg" alt="JBY"/></a>
-  <div class="t">Our Team<small>Location + Role &mdash; 3 options</small></div>
+  <div class="t">Our Team<small>Location + Role &mdash; 4 options</small></div>
 </div>
 
 <section class="intro">
   <h1>Location and role, together</h1>
-  <p>Three ways to slice the full team by <strong>office</strong> and <strong>department</strong> at once. All live below with the real team &mdash; every card carries a role tag, and both filters combine.</p>
+  <p>Four ways to slice the full team by <strong>office</strong> and <strong>department</strong> at once. All live below with the real team &mdash; every card carries a role tag, and both filters combine.</p>
   <p class="note">Real roster across all 9 offices. A few teammates are awaiting a headshot, shown as a monogram for now.</p>
 </section>
 
@@ -152,6 +153,21 @@ footer.pg{padding:36px 40px 80px;border-top:1px solid var(--hair);font-family:'M
   <div class="v-head"><span class="v-num">03</span><h2>Dynamic sidebar &mdash; underline tabs</h2>
     <p>Same dynamic behaviour as option 02, styled lighter: each choice is a tab, and the active one is underlined and a touch bolder. Quieter, more editorial.</p></div>
   <div data-variant="sidebar" data-grid="g3">
+    <div class="sidebar-wrap">
+      <aside class="facets">
+        <div class="facet-block facet-block--tabs" data-axis="office"><h3>Office</h3></div>
+        <div class="facet-block facet-block--tabs" data-axis="dept"><h3>Role</h3></div>
+      </aside>
+      <div class="v-grid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 dynamic sidebar (underline tabs) — 3 wider cards per row -->
+<section class="variant">
+  <div class="v-head"><span class="v-num">04</span><h2>Dynamic sidebar &mdash; three per row</h2>
+    <p>Exactly like option 03, only three cards to a row &mdash; so each headshot sits larger and more prominent. Same underline tabs, same dynamic filtering.</p></div>
+  <div data-variant="sidebar" data-grid="g4">
     <div class="sidebar-wrap">
       <aside class="facets">
         <div class="facet-block facet-block--tabs" data-axis="office"><h3>Office</h3></div>

@@ -163,7 +163,7 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
   <section class="wrap team-body">
     <aside class="facets">
       <div class="facet-block" id="office-facet" data-axis="office"><h3>Office</h3></div>
-      <div class="facet-block" id="role-facet" data-axis="dept"><h3>Role</h3></div>
+      <div class="facet-block" id="role-facet" data-axis="dept"><h3>Department</h3></div>
     </aside>
     <div>
       <div class="team-grid" id="team-grid"></div>
@@ -298,7 +298,7 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
   function render(){
     sync();
     renderFacet(officeFacet,'office','All offices',availOffices().map(function(o){return [o,o.replace('&amp;','&')];}),function(v){return filtered(v==='all'?'all':v,state.dept).length;});
-    renderFacet(roleFacet,'dept','All roles',availRoles(),function(v){return filtered(state.office,v==='all'?'all':v).length;});
+    renderFacet(roleFacet,'dept','All departments',availRoles(),function(v){return filtered(state.office,v==='all'?'all':v).length;});
     var list=filtered(state.office,state.dept);
     grid.innerHTML=list.length?list.map(cardHTML).join(''):'';
     if(emptyEl)emptyEl.hidden=list.length>0;

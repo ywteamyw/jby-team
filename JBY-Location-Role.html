@@ -26,12 +26,12 @@ button{font-family:inherit;cursor:pointer;-webkit-appearance:none;border:0;backg
 .bar .t{font-family:'Mesmerize',sans-serif;font-weight:300;text-transform:uppercase;font-size:18px;line-height:22px;color:#111}
 .bar .t small{display:block;font-family:'Myriad Pro',sans-serif;text-transform:none;font-size:16px;color:var(--mute)}
 
-.intro{max-width:1280px;margin:0 auto;padding:56px 40px 8px}
+.intro{padding:56px 40px 8px}
 .intro h1{font-family:'Mesmerize',sans-serif;font-weight:300;text-transform:uppercase;font-size:32px;line-height:44px;color:#111;margin:0}
 .intro p{font-family:'Myriad Pro',sans-serif;font-size:18px;line-height:27px;color:var(--mute);margin:12px 0 0;max-width:860px}
 .intro .note{margin-top:14px;font-size:16px;color:#9a9aa1}
 
-.variant{max-width:1280px;margin:0 auto;padding:44px 40px;border-top:1px solid var(--hair)}
+.variant{padding:44px 40px;border-top:1px solid var(--hair)}
 .v-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:24px}
 .v-num{font-family:'Mesmerize',sans-serif;font-size:16px;color:var(--navy);letter-spacing:0.12em}
 .v-head h2{font-family:'Mesmerize',sans-serif;font-weight:300;text-transform:uppercase;font-size:23px;line-height:28px;color:#111;margin:0}
@@ -88,12 +88,13 @@ button{font-family:inherit;cursor:pointer;-webkit-appearance:none;border:0;backg
 .facet-block--fill button.on .n{opacity:0.85}
 
 /* variant 3: underline tabs */
+[data-grid="g3"] .tag{font-size:14px} /* caps tag can be 14px */
 .facet-block--tabs button{padding:9px 2px;color:#7a7a82;font-weight:300}
 .facet-block--tabs button:hover{color:#111}
 .facet-block--tabs button.on{color:#111;font-weight:400}
 .facet-block--tabs button.on .lbl{box-shadow:inset 0 -1.5px 0 currentColor;padding-bottom:3px}
 
-footer.pg{max-width:1280px;margin:0 auto;padding:36px 40px 80px;border-top:1px solid var(--hair);font-family:'Myriad Pro',sans-serif;font-size:16px;color:#9a9aa1}
+footer.pg{padding:36px 40px 80px;border-top:1px solid var(--hair);font-family:'Myriad Pro',sans-serif;font-size:16px;color:#9a9aa1}
 
 @media (max-width:1040px){ .v-grid{grid-template-columns:repeat(3,1fr)} .sidebar-wrap{grid-template-columns:190px 1fr;gap:26px} }
 @media (max-width:760px){
@@ -254,7 +255,12 @@ footer.pg{max-width:1280px;margin:0 auto;padding:36px 40px 80px;border-top:1px s
     var grid=root.querySelector('.v-grid');
     var officeBlock=root.querySelector('[data-axis="office"]');
     var deptBlock=root.querySelector('[data-axis="dept"]');
+    var section=root.closest('.variant')||root;
     var state={office:'all',dept:'all'};
+    function scrollToSection(){
+      var y=section.getBoundingClientRect().top+window.scrollY-80; // clear the sticky bar
+      window.scrollTo({top:y,behavior:'smooth'});
+    }
 
     function availOffices(){ return OFFICES.filter(function(o){ return TEAM.some(function(p){ return p.o===o && inDept(p,state.dept); }); }); }
     function availRoles(){ return ROLES.filter(function(rr){ return TEAM.some(function(p){ return inOffice(p,state.office) && inDept(p,rr[0]); }); }); }
@@ -265,7 +271,7 @@ footer.pg{max-width:1280px;margin:0 auto;padding:36px 40px 80px;border-top:1px s
         var b=document.createElement('button');
         b.innerHTML='<span class="lbl">'+it[1]+'</span><span class="n">'+counter(it[0])+'</span>';
         if(state[axis]===it[0]) b.classList.add('on');
-        b.addEventListener('click',function(){ state[axis]=it[0]; render(); });
+        b.addEventListener('click',function(){ state[axis]=it[0]; render(); scrollToSection(); });
         block.appendChild(b);
       });
     }

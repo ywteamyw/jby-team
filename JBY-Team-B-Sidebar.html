@@ -70,7 +70,7 @@ main{padding-top:128px}
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 20px}
 .team-card{position:relative;aspect-ratio:325/406;border-radius:2px;overflow:hidden;background:#e9edf1}
 .t-photo{position:absolute;inset:0;overflow:hidden}
-.t-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;transition:transform .7s cubic-bezier(0.22,1,0.36,1);will-change:transform}
+.t-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;transition:transform .7s cubic-bezier(0.22,1,0.36,1)}
 .team-card:hover .t-photo img{transform:scale(1.06)}
 .t-mono{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(160deg,#5a7d94,#3a586b);color:#fff;font-family:'Mesmerize',sans-serif;font-weight:300;font-size:40px;letter-spacing:0.04em}
@@ -117,7 +117,7 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
 .back-top svg{width:20px;height:20px;display:block;transform:rotate(-90deg)}
 
 /* REVEAL */
-.reveal{opacity:0;transform:translate3d(0,40px,0);will-change:opacity,transform;transition:opacity .6s cubic-bezier(0.22,1,0.36,1),transform .6s cubic-bezier(0.22,1,0.36,1)}
+.reveal{opacity:0;transform:translate3d(0,40px,0);transition:opacity .6s cubic-bezier(0.22,1,0.36,1),transform .6s cubic-bezier(0.22,1,0.36,1)}
 .reveal.in{opacity:1;transform:translate3d(0,0,0)}
 .reveal.d1{transition-delay:.05s}.reveal.d2{transition-delay:.1s}.reveal.d3{transition-delay:.15s}
 .split-words{display:inline-block}
@@ -266,8 +266,7 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
   function cardHTML(p,i){
     var media=p.img?'<div class="t-photo"><img src="./assets/'+p.img+'" alt="'+p.n+'" loading="lazy"/></div>':'<div class="t-photo"><div class="t-mono">'+initials(p.n)+'</div></div>';
     var tag=tagText(p)?'<span class="t-tag">'+tagText(p)+'</span>':'';
-    var d=['','d1','d2','d3'][i%4];
-    return '<article class="team-card reveal '+d+'">'+media+'<div class="t-foot">'+tag+
+    return '<article class="team-card">'+media+'<div class="t-foot">'+tag+
       '<div class="t-label"><span class="t-office">'+p.o+'</span><div class="t-nr"><span class="t-name">'+p.n+'</span><span class="t-role">'+p.r+'</span></div></div></div></article>';
   }
 

@@ -140,6 +140,26 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
 }
 @media (max-width:520px){ .team-grid{grid-template-columns:1fr;max-width:360px;margin:0 auto} }
 @media (prefers-reduced-motion:reduce){ .reveal,.split-words .w{transition:none;opacity:1;transform:none} .t-photo img{transition:none} }
+
+/* ====== MOBILE POLISH (phones only) ====== */
+@media (max-width:600px){
+  /* the wide CTA does not fit next to the burger and the logo */
+  .nav .cta{display:none}
+
+  /* .wrap's padding shorthand in the query above zeroes the head's top padding */
+  .team-head{padding-top:40px}
+  .team-head p{margin-bottom:6px}
+
+  /* the facet lists took six rows: smaller type and tighter gaps bring it to three */
+  .facet-block{margin-top:22px;gap:8px 16px}
+  .facet-block h3{font-size:13px;margin:0 0 8px}
+  .facet-block button{font-size:15px}
+
+  /* "info@jeffbrownyachts.com" is one unbreakable token in uppercase Mesmerize */
+  .foot-col p{font-size:14px;line-height:18px}
+  .foot-col p a{font-size:inherit}
+}
+
 </style>
 </head>
 <body>

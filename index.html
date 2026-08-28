@@ -129,9 +129,12 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
   .nav{padding:16px 24px}.nav.scrolled{padding:12px 24px}
   main{padding-top:104px}.wrap{padding:0 24px}
   .team-body{grid-template-columns:1fr;gap:20px}.facets{position:static}
-  .facet-block{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 18px}
-  .facet-block h3{width:100%}
-  .facet-block button{width:auto}
+  /* mobile: each facet is a single horizontal-scroll row (label above), keeping counts + active underline */
+  .facet-block{display:block}
+  .facet-block h3{margin:0 0 8px}
+  .facet-items{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:0 22px;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+  .facet-items::-webkit-scrollbar{display:none}
+  .facet-block button{width:auto;flex:0 0 auto;white-space:nowrap;padding:8px 0}
   .team-grid{grid-template-columns:repeat(2,1fr)}
   .team-head h1{font-size:28px;line-height:40px}.team-head p{font-size:18px;line-height:26px}
   .foot-grid{grid-template-columns:1fr}.foot-col{padding-top:0}
@@ -307,13 +310,15 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
   }
   function scrollTop(){var y=section.getBoundingClientRect().top+window.scrollY-96;window.scrollTo({top:y,behavior:'smooth'});}
   function renderFacet(block,axis,allLabel,items,counter){
-    block.querySelectorAll('button').forEach(function(b){b.remove();});
+    var wrap=block.querySelector('.facet-items');
+    if(!wrap){wrap=document.createElement('div');wrap.className='facet-items';block.appendChild(wrap);}
+    wrap.innerHTML='';
     [['all',allLabel]].concat(items).forEach(function(it){
       var b=document.createElement('button');
       b.innerHTML='<span class="lbl">'+it[1]+'</span><span class="n">'+counter(it[0])+'</span>';
       if(state[axis]===it[0])b.classList.add('on');
       b.addEventListener('click',function(){state[axis]=it[0];render();scrollTop();});
-      block.appendChild(b);
+      wrap.appendChild(b);
     });
   }
   function render(){

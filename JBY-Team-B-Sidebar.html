@@ -146,6 +146,11 @@ footer{background:var(--paper);padding:40px 40px 80px;color:var(--mute);font-siz
 @media (max-width:520px){ .team-grid{grid-template-columns:1fr;max-width:360px;margin:0 auto} }
 @media (prefers-reduced-motion:reduce){ .reveal,.split-words .w{transition:none;opacity:1;transform:none} .t-photo img{transition:none} }
 </style>
+<style>/* MOBILE-HELP-ONELINE: help/expert title one line + full-width CTA (site-wide) */
+@media (max-width:680px){
+  .help h2,.expert h2{white-space:nowrap;font-size:clamp(16px,5.8vw,28px);line-height:1.25}
+  .help .btn-ghost,.help .btn,.expert .btn,.expert .btn-ghost{width:100%}
+}</style>
 </head>
 <body>
 <div class="progress"><div class="progress-bar"></div></div>
